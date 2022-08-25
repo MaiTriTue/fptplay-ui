@@ -1,0 +1,257 @@
+.wrapper {
+    --search-boder-radius: 92px;
+    --search-height: 46px;
+    --search-top-spacer: 9px;
+    --search-button-width: 52px;
+
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--black);
+    box-shadow: 0px 1px 1px rgb(0 0 0 /12%);
+}
+
+.header {
+    width: 100%;
+    height: var(--default-layout-header-height);
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+}
+
+.header-inner {
+    width: var(--default-layout-width);
+    height: 100%;
+    padding: 7px 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-logo {
+    padding-left: 110px;
+    display: flex;
+    object-fit: cover;
+}
+
+// header logo dowload
+
+.header-logo-dowload {
+    z-index: 3;
+    position: relative;
+    &:hover {
+        .qr-codes {
+            display: flex;
+        }
+    }
+}
+
+.qr-codes {
+    width: 100%;
+    // width: 286px;
+    display: none;
+    justify-content: space-between;
+    position: absolute;
+    top: 98%;
+    background-color: #000;
+    padding: 15px 30px;
+
+    border-radius: 0 0 3px 3px;
+}
+
+.qr-code {
+    display: flex;
+    flex-direction: column;
+
+    img:last-child {
+        margin-top: 15px;
+    }
+}
+
+.qr-android {
+}
+
+.icon-google-play {
+}
+
+.qr-appstore {
+}
+
+.icon-appstore {
+}
+
+// header logo register
+
+.header-logo-register {
+    margin-left: 16px;
+
+    a {
+    }
+
+    a:hover {
+        .logo-register {
+            display: none;
+        }
+
+        .logo-register-hover {
+            animation: doianh 0.1s ease;
+            display: inline-block;
+        }
+    }
+}
+
+@keyframes doianh {
+    0% {
+        opacity: 0.6;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.logo-register {
+    animation: doianh 0.1s ease;
+    width: 100%;
+    display: inline-block;
+}
+
+.logo-register-hover {
+    display: none;
+}
+
+.header-function {
+}
+
+.header-function-list {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.search-item {
+    font-size: 2rem;
+    color: var(--white);
+
+    &:hover {
+        cursor: pointer;
+        color: var(--button-color-hover);
+    }
+}
+
+.btnPackage {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    padding: 10px 16px;
+    margin-left: 15px;
+    margin-right: 20px;
+    border-radius: 8px;
+    border-color: var(--button-color);
+    background-color: var(--button-color);
+}
+
+.login {
+    font-size: 1.4rem;
+    color: var(--text-color);
+
+    &:hover {
+        cursor: pointer;
+        color: var(--button-color-hover);
+    }
+}
+
+.navbar {
+    width: 100%;
+    height: var(--default-layout-navbar-height);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    font-size: 1.6rem;
+}
+
+.navbar-inner {
+    width: var(--default-layout-detail-width);
+    height: 100%;
+}
+
+.navbar-inner-list {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    list-style: none;
+
+    li {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+    }
+    li:hover {
+        .navbar-item {
+            cursor: pointer;
+            color: var(--button-color-hover);
+        }
+    }
+    .navbar-item {
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.navbar-item-img {
+    padding-right: 5px;
+}
+
+.navbar-item-icon {
+    padding-left: 5px;
+}
+
+.subnavbar-inner-list {
+    position: absolute;
+    display: none;
+    top: 100%;
+    z-index: 1;
+    background-color: var(--black);
+
+    li {
+        padding: 5px 16px;
+    }
+
+    li:hover {
+        .subnavbar-item {
+            cursor: pointer;
+            color: var(--button-color-hover);
+        }
+    }
+
+    .subnavbar-item {
+        width: 100%;
+        color: var(--white);
+    }
+}
+
+.navbar-item-them:hover {
+    .subnavbar-inner-list {
+        display: block;
+    }
+}
+
+.active {
+    .navbar-item {
+        color: var(--white);
+        border-bottom: 2px solid var(--button-color);
+    }
+}
