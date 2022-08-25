@@ -8,30 +8,34 @@ import { faCircleXmark, faSpinner, faMagnifyingGlass, faAngleDown } from '@forta
 import { Link } from 'react-router-dom';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
+import { useStore, actions } from '~/Store';
 
 const cx = classNames.bind(styles);
 
 const menu = [
     { url: '', content: 'Trang chủ' },
-    { url: 'channel', content: 'Truyền hình' },
+    { url: 'truyen-hinh', content: 'Truyền hình' },
     { url: 'hbo-go', content: 'HBO GO', menuLogo: images.logoMenuHbo },
-    { url: 'category', content: 'Phim bộ' },
-    { url: 'category', content: 'TV show' },
-    { url: 'category', content: 'Anime' },
-    { url: 'category', content: 'Phim lẻ' },
-    { url: 'category', content: 'Phim chiếu rạp' },
-    { url: 'category', content: 'Thể thao' },
-    { url: 'category', content: 'Âm nhạc' },
-    { url: 'category', content: 'Gói đặc sắc' },
-    { url: 'category', content: 'Thiếu nhi' },
-    { url: 'category', content: 'Hài' },
-    { url: 'category', content: 'Học online' },
+    { url: 'danh-sach', content: 'Phim bộ' },
+    { url: 'danh-sach', content: 'TV show' },
+    { url: 'danh-sach', content: 'Anime' },
+    { url: 'danh-sach', content: 'Phim lẻ' },
+    { url: 'danh-sach', content: 'Phim chiếu rạp' },
+    { url: 'danh-sach', content: 'Thể thao' },
+    { url: 'danh-sach', content: 'Âm nhạc' },
+    { url: 'danh-sach', content: 'Gói đặc sắc' },
+    { url: 'danh-sach', content: 'Thiếu nhi' },
+    { url: 'danh-sach', content: 'Hài' },
+    { url: 'danh-sach', content: 'Học online' },
 ];
 
 function Header() {
     const [active, setActive] = useState(0);
+    const [state, dispatch] = useStore();
+    const { userLogin } = state;
     let activeMenu;
 
+    console.log(userLogin);
     const HandleActive = (index) => {
         setActive(index);
     };
@@ -91,9 +95,15 @@ function Header() {
                                 <button className={cx({ btnPackage: 'btn-package', btn: 'btn' })}>MUA GÓI</button>
                             </li>
                             <li>
-                                <Link to="/login" className={cx('login')}>
-                                    Đăng nhập
-                                </Link>
+                                {userLogin ? (
+                                    <Link to={'/'} className={cx('wrap-img-user')}>
+                                        <img src={images.iconDefaultUse} alt="img-user" className={cx('img-user')} />
+                                    </Link>
+                                ) : (
+                                    <Link to="/dang-nhap" className={cx('login')}>
+                                        Đăng nhập
+                                    </Link>
+                                )}
                             </li>
                         </ul>
                     </div>

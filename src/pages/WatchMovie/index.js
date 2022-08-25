@@ -11,13 +11,14 @@ import {
     faHeart,
     faMessage,
     faPaperPlane,
+    faPlay,
     faShareNodes,
     faThumbsUp,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import images from '~/assets/images';
-import { Comment, CommentChildren, SlidePoster } from '~/components/componentDetail';
+import { Comment, CommentChildren, SlidePoster, IframeMovie } from '~/components/componentDetail';
 
 const cx = classNames.bind(styles);
 
@@ -142,11 +143,38 @@ function WatchMovie(props) {
             <div className={cx('gallery-display-area')}>
                 <div className={cx('gallery-wrap')}>
                     <div className={cx('gallery_wrap-video')}>
-                        <iframe
+                        <IframeMovie />
+                        {/* <div className={cx('group')} id="process-video">
+                            <div
+                                className={cx('poster-image')}
+                                id="poster-image"
+                                onClick={fadeImage}
+                                ref={posterImageRef}
+                            >
+                                <FontAwesomeIcon icon={faPlay} className={cx('poster-image-icon')} />
+                            </div>
+                           
+                            <iframe
+                                id="vimeo"
+                                ref={iframeRef}
+                                src="https://aa.nguonphimmoi.com/share/1f0e3dad99908345f7439f8ffabdffc4?autoplay=1"
+                                width="500"
+                                height="281"
+                                frameBorder="0"
+                                allowFullScreen
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture full"
+                            ></iframe>
+                        </div> */}
+
+                        {/* <iframe
+                            style={{ border: 'none' }}
+                            loading="eager"
                             className={cx('video')}
+                            frameBorder="0"
+                            allowtransparency="true"
                             allowFullScreen
-                            src="https://aa.nguonphimmoi.com/share/1f0e3dad99908345f7439f8ffabdffc4"
-                        ></iframe>
+                            src="https://aa.nguonphimmoi.com/share/1f0e3dad99908345f7439f8ffabdffc4?autoplay=1"
+                        ></iframe> */}
                     </div>
                     <div className={cx('gallery_wrap-episode')}>
                         <h3 className={cx('gallery_wrap-episode-title')}>Tập phim</h3>

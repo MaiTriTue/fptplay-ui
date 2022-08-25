@@ -7,6 +7,7 @@
     --white: #fff;
     --text-color: #9b9b9b;
     --text-color2: #828282;
+    --text-color3: #b4b4b4;
     --button-color: #ff6500;
     --button-color-hover: #d95600;
     --border-color: #cc5100;
@@ -45,7 +46,7 @@ button,
 }
 
 a[href] {
-    color: var(--text-color);
+    color: var(--text-color3);
     text-decoration: none;
 }
 
