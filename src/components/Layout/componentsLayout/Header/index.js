@@ -55,9 +55,14 @@ function Header() {
     return (
         <div className={cx('wrapper')}>
             <div className={cx('header')}>
-                <a href="/" className={cx('logo')}>
-                    <img src={images.logoFpt} alt="Fpt-Play" />
-                </a>
+                {/* <Link to={'/'} className={cx('header-logofpt')}>
+                    <img src={images.logoFpt} alt="FPT" className={cx('logo')} />
+                </Link> */}
+                <div className={cx('header-logofpt')}>
+                    <Link to={'/'}>
+                        <img src={images.logoFpt} alt="FPT" className={cx('logo')} />
+                    </Link>
+                </div>
                 <div className={cx('header-inner')}>
                     <div className={cx('header-logo')}>
                         <div className={cx('header-logo-dowload')}>
@@ -74,7 +79,7 @@ function Header() {
                             </div>
                         </div>
                         <div className={cx('header-logo-register')}>
-                            <Link to="/dang-ky-dich-vu">
+                            <Link to="/dang-ky-dich-vu" className={cx('header-logo-register-link')}>
                                 <img className={cx('logo-register')} src={images.logoRegister} alt="Fpt-Play" />
                                 <img
                                     className={cx('logo-register-hover')}

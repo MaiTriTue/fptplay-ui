@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -9,16 +9,38 @@ import cookies from 'react-cookies';
 import images from '~/assets/images';
 import styles from './Login.module.scss';
 import { useStore, actions } from '~/Store';
-import { InputUserName, InputPassword, Validator } from '~/components/componentDetail';
+import { InputUserName, InputPassword, Validator, WarningUserLogin } from '~/components/componentDetail';
 import Apis, { endpoints } from '~/Apis/Apis';
 
 const cx = classNames.bind(styles);
 
 function Login() {
     let oauth2Info;
+    const wrapperRef = useRef(null);
+    const warningLoginRef = useRef(null);
     const navigate = useNavigate();
     const [state, dispatch] = useStore();
-    const { userName, password, checkUserValid, checkPassValid, userLogin } = state;
+    const { userName, password, checkUserValid, checkPassValid, userLogin, warningLogin } = state;
+
+    const [offset, setOffset] = useState(0);
+
+    useEffect(() => {
+        const onScroll = () => setOffset(window.pageYOffset);
+        // clean up code
+        window.removeEventListener('scroll', onScroll);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
+
+    useEffect(() => {
+        if (warningLogin === true) {
+            warningLoginRef.current.style.display = 'block';
+        } else if (warningLogin === false) {
+            warningLoginRef.current.style.display = 'none';
+        }
+    }, [warningLogin]);
+
+    console.log(offset);
 
     const HandleSubmit = async (e) => {
         e.preventDefault();
@@ -32,6 +54,7 @@ function Login() {
                     oauth2Info = res.data[0];
                 })
                 .catch(function (error) {
+                    dispatch(actions.setWarningLogin(true));
                     console.log(error);
                 });
 
@@ -46,6 +69,7 @@ function Login() {
                     cookies.save('origin-movie-access_token', res.data.access_token);
                 })
                 .catch(function (error) {
+                    dispatch(actions.setWarningLogin(true));
                     console.log(error);
                 });
 
@@ -67,7 +91,10 @@ function Login() {
     };
 
     return (
-        <div className={cx('wrapper')}>
+        <div className={cx('wrapper')} ref={wrapperRef}>
+            <div className={cx('wrapper-warning')} ref={warningLoginRef}>
+                <WarningUserLogin />
+            </div>
             <div className={cx('gallery-display-area')}>
                 <div className={cx('gallery-wrap-title')}>
                     <h2>Đăng nhập</h2>

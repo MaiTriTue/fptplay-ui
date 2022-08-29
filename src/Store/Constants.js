@@ -5,3 +5,4 @@ export const SET_CHECK_USER_VALID = 'set_check_user_valid';
 export const SET_CHECK_PASS_VALID = 'set_check_pass_valid';
 export const SET_CHECK_REPASS_VALID = 'set_check_repass_valid';
 export const USER_LOGIN = 'user_login';
+export const WARNING_LOGIN = 'warning_login';

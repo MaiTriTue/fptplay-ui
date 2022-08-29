@@ -21,6 +21,9 @@
     display: flex;
     justify-content: center;
 }
+.header-logofpt {
+    height: 100%;
+}
 
 .logo {
     position: absolute;
@@ -35,19 +38,30 @@
     padding: 7px 15px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .header-logo {
-    padding-left: 110px;
+    margin-left: 100px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     object-fit: cover;
 }
 
 // header logo dowload
 
 .header-logo-dowload {
-    z-index: 3;
+    // z-index: 3;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .logo-dowload {
+        width: 100%;
+    }
+
     &:hover {
         .qr-codes {
             display: flex;
@@ -94,17 +108,14 @@
 .header-logo-register {
     margin-left: 16px;
 
-    a {
-    }
-
-    a:hover {
+    .header-logo-register-link:hover {
         .logo-register {
             display: none;
         }
 
         .logo-register-hover {
-            animation: doianh 0.1s ease;
-            display: inline-block;
+            animation: doianh 0.5s ease;
+            display: flex;
         }
     }
 }
@@ -119,10 +130,22 @@
     }
 }
 
+.header-logo-register-link {
+    // position: relative;
+
+    // .logo-register,
+    // .logo-register-hover {
+    //     position: absolute;
+    //     top: 50%;
+    //     transform: translateY(-50%);
+    // }
+}
+
 .logo-register {
     animation: doianh 0.1s ease;
     width: 100%;
-    display: inline-block;
+    // display: inline-block;
+    display: flex;
 }
 
 .logo-register-hover {

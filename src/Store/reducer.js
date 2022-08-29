@@ -7,10 +7,12 @@ import {
     SET_CHECK_PASS_VALID,
     SET_CHECK_REPASS_VALID,
     USER_LOGIN,
+    WARNING_LOGIN,
 } from './Constants';
 
 const initState = {
     userLogin: cookies.load('origin-movie-user'),
+    warningLogin: false,
     userName: '',
     password: '',
     rePassword: '',
@@ -25,6 +27,11 @@ function reducer(state, action) {
             return {
                 ...state,
                 userLogin: action.payload,
+            };
+        case WARNING_LOGIN:
+            return {
+                ...state,
+                warningLogin: action.payload,
             };
         case SET_USERNAME_INPUT:
             return {

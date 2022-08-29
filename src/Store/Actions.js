@@ -1,4 +1,5 @@
 import {
+    WARNING_LOGIN,
     USER_LOGIN,
     SET_USERNAME_INPUT,
     SET_PASSWORD_INPUT,
@@ -34,5 +35,9 @@ export const setCheckRePassvalid = (payload) => ({
 });
 export const setUserLogin = (payload) => ({
     type: USER_LOGIN,
+    payload,
+});
+export const setWarningLogin = (payload) => ({
+    type: WARNING_LOGIN,
     payload,
 });
